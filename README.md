@@ -1,12 +1,12 @@
 # Tushar Agagrwal
 ## NBA Player Stats Explorer
 ```
-streamlit run Boston_app.py
+streamlit run California_app.py
 ```
  
  # Deployed Link:
  ```
-https://tushar2704-nba-player-app-nba-app-b0r5my.streamlit.app/
+https://tushar2704-california-house-prediction-ap-california-app-9ybf6u.streamlit.app/
  ```
 
  ## Follow me on kaggle.com/tusharaggarwal27
