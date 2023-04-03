@@ -24,7 +24,7 @@ st.sidebar.header("Please specify input parameters")
 # Defining user_input_features
 
 def user_input_features():
-    MedInc = st.sidebar.slider("MedInc", X.MedInc.min(), X.MedInc.max(), X.MedInc.mean())
+    MedInc = st.sidebar.slider("MedInc", X.MedInc.values.min(), X.MedInc.values.max(), X.MedInc.values.mean())
     HouseAge =st.sidebar.slider("HouseAge", X.HouseAge.min(), X.HouseAge.max(), X.HouseAge.mean())
     AveRooms =st.sidebar.slider("AveRooms", X.AveRooms.min(), X.AveRooms.max(), X.AveRooms.mean())
     Population =st.sidebar.slider("Population", X.Population.min(), X.Population.max(), X.Population.mean())
