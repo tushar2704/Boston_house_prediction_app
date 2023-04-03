@@ -3,4 +3,4 @@ pandas
 numpy
 shap
 matplotlib
-scikit-learn==1.0.1
+scikit-learn==1.0
