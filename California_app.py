@@ -63,7 +63,7 @@ predictions =model.predict(df)
 
 # Predication display on App
 st.header("Predication of MedHouseVal")
-st.write(predictions+" in 1000s")
+st.write(predictions)
 st.write("---")
 
 # Explaining the model's prediction using SHAP values
