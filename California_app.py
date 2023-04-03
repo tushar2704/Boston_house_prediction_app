@@ -8,7 +8,7 @@ import shap
 import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_california_housing
 from sklearn.ensemble import RandomForestRegressor
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # Application body
 st.title("California House Price Prediction Application")
 st.write(" This application predicts the California House Prices")
@@ -17,25 +17,27 @@ housing = fetch_california_housing()
 # Defining feature and target variable
 X=pd.DataFrame(housing.data, columns=housing.feature_names)
 y=pd.DataFrame(housing.target, columns=['MedHouseVal'])
-y=y.values
+y = y.values.ravel()
 # Sidebar
 st.sidebar.header("Please specify input parameters")
 
 # Defining user_input_features
 
+MedInc = st.sidebar.slider("MedInc",int(X.MedInc.min()), int(X.MedInc.max()), int(X.MedInc.mean()),key="MedInc")
+HouseAge =st.sidebar.slider("HouseAge", int(X.HouseAge.min()), int(X.HouseAge.max()), int(X.HouseAge.mean()),key="HouseAge")
+AveRooms =st.sidebar.slider("AveRooms", int(X.AveRooms.min()), int(X.AveRooms.max()), int(X.AveRooms.mean()),key="AveRooms")
+AveBedrms =st.sidebar.slider("AveBedrms", int(X.AveBedrms.min()), int(X.AveBedrms.max()), int(X.AveBedrms.mean()),key="AveBedrms")
+Population =st.sidebar.slider("Population", int(X.Population.min()), int(X.Population.max()), int(X.Population.mean()),key="Population")
+AveOccup =st.sidebar.slider("AveOccup", int(X.AveOccup.min()), int(X.AveOccup.max()), int(X.AveOccup.mean()),key="AveOccup")
+Latitude =st.sidebar.slider("Latitude", int(X.Latitude.min()), int(X.Latitude.max()), int(X.Latitude.mean()),key="Latitude")
+Longitude =st.sidebar.slider("Longitude", int(X.Longitude.min()), int(X.Longitude.max()), int(X.Longitude.mean()),key="Longitude")
+
 def user_input_features():
-    MedInc = st.sidebar.slider("MedInc", X['MedInc'].min(), X['MedInc'].max(), X['MedInc'].mean())
-    HouseAge =st.sidebar.slider("HouseAge", X.HouseAge.min(), X.HouseAge.max(), X.HouseAge.mean())
-    AveRooms =st.sidebar.slider("AveRooms", X.AveRooms.min(), X.AveRooms.max(), X.AveRooms.mean())
-    Population =st.sidebar.slider("Population", X.Population.min(), X.Population.max(), X.Population.mean())
-    AveOccup =st.sidebar.slider("AveOccup", X.AveOccup.min(), X.AveOccup.max(), X.AveOccup.mean())
-    Latitude =st.sidebar.slider("Latitude", X.Latitude.min(), X.Latitude.max(), X.Latitude.mean())
-    Longitude =st.sidebar.slider("Longitude", X.Longitude.min(), X.Longitude.max(), X.Longitude.mean())
-    
     
     data = {'MedInc': MedInc,
             'HouseAge': HouseAge,
             'AveRooms': AveRooms,
+            'AveBedrms':AveBedrms,
             'Population': Population,
             'AveOccup': AveOccup,
             'Latitude': Latitude,
@@ -44,7 +46,7 @@ def user_input_features():
     features =pd.DataFrame(data, index=[0])
     return features
 
-#df = user_input_features()
+df = user_input_features()
 
 # Main Panel
 
@@ -57,11 +59,11 @@ model = RandomForestRegressor()
 model.fit(X, y)
 
 # Predictions
-predictions =model.predict(user_input_features())
+predictions =model.predict(df)
 
 # Predication display on App
 st.header("Predication of MedHouseVal")
-st.write(predictions)
+st.write(predictions+" in 1000s")
 st.write("---")
 
 # Explaining the model's prediction using SHAP values
