@@ -49,7 +49,7 @@ def user_input_features():
 # Main Panel
 
 st.header("Selected input parameters")
-st.write(df)
+st.write(user_input_features())
 st.write("___")
 
 # Building Regression Model
