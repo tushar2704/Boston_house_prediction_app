@@ -17,14 +17,14 @@ housing = fetch_california_housing()
 # Defining feature and target variable
 X=pd.DataFrame(housing.data, columns=housing.feature_names)
 y=pd.DataFrame(housing.target, columns=['MedHouseVal'])
-
+y=y.values
 # Sidebar
 st.sidebar.header("Please specify input parameters")
 
 # Defining user_input_features
 
 def user_input_features():
-    MedInc =st.sidebar.slider("MedInc", X.MedInc.min(), X.MedInc.max(), X.MedInc.mean())
+    MedInc = st.sidebar.slider("MedInc", X.MedInc.min(), X.MedInc.max(), X.MedInc.mean())
     HouseAge =st.sidebar.slider("HouseAge", X.HouseAge.min(), X.HouseAge.max(), X.HouseAge.mean())
     AveRooms =st.sidebar.slider("AveRooms", X.AveRooms.min(), X.AveRooms.max(), X.AveRooms.mean())
     Population =st.sidebar.slider("Population", X.Population.min(), X.Population.max(), X.Population.mean())
