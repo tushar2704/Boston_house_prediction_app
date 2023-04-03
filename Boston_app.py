@@ -44,7 +44,7 @@ def user_input_features():
     features =pd.DataFrame(data, index=[0])
     return features
 
-df=user_input_features()
+#df = user_input_features()
 
 # Main Panel
 
@@ -57,7 +57,7 @@ model = RandomForestRegressor()
 model.fit(X, y)
 
 # Predictions
-predictions =model.predict(df)
+predictions =model.predict(user_input_features())
 
 # Predication display on App
 st.header("Predication of MedHouseVal")
