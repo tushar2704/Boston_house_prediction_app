@@ -3,8 +3,11 @@
 ```
 streamlit run California_app.py
 ```
- 
- # Deployed Link:
+Pip install libraries
+```
+pip install -r requirements.txt
+```
+  # Deployed Link:
  ```
 https://tushar2704-california-house-prediction-ap-california-app-9ybf6u.streamlit.app/
  ```
